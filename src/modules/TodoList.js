@@ -21,11 +21,18 @@ function newTask(title, description, dueDate, priority) {
 
 function createChildNode(task) {
     let taskNode = document.createElement("div");
+    let priority = task.priority;
     taskNode.innerHTML = `
     <div class="task--1">
         <h3>${task.title}</h3>
         <h3>${task.dueDate}</h3>
-        <h3>${task.priority}</h3>
+
+        <select name="priority" id="priority">
+        <option ${(priority=="Unset")? selected : ""} value="none" disabled>Priority</option>
+        <option ${(priority=="Important")? selected : ""} value="Important">Important</option>
+        <option ${(priority=="Not Important")? selected : ""} value="Not Important">Not Important</option>
+        </select>
+
     </div>
 
     <h3>${task.description}</h3>
@@ -45,7 +52,7 @@ function addNode(target, node) {
 let addTaskButton = document.querySelector("#addTask");
 let form = document.querySelector("#form");
 
-form.addEventListener("submit", (e)=>{
+form.addEventListener("submit", (e) => {
     addTask();
     e.preventDefault();
 })
@@ -54,7 +61,7 @@ function addTask() {
     let formData = fetchFormData();
     let bar = newTask(formData.title, "a", formData.date, formData.priority);
     let foo = createChildNode(bar);
-    
+
     // let foo = createChildNode({ title: formData.title, description: "aa", dueDate: formData.date, priority: formData.priority });
     addNode('useless argument', foo);
 
@@ -62,7 +69,7 @@ function addTask() {
 };
 
 //event listener for new tasks
-events.on("newTask", (task) =>{
+events.on("newTask", (task) => {
     inbox.task.push(task);
 });
 
@@ -72,7 +79,9 @@ function fetchFormData() {
 
     var title = formData.get("task-title"),
         date = formData.get("date"),
-        priority = formData.get("priority");
+        priority = (formData.get("priority") == null) ? "Unset" : formData.get("priority");
+
+
 
     return { title, date, priority };
 
@@ -80,6 +89,6 @@ function fetchFormData() {
 
 
 
-export {inbox, createChildNode, addNode };
+export { inbox, createChildNode, addNode };
 
 //emit signal when new task created
