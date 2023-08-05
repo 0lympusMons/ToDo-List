@@ -1,3 +1,5 @@
+
+
 const EventEmitter = require('events');
 
 const events = new EventEmitter();
@@ -26,8 +28,10 @@ function createChildNode(task) {
 
     taskNode.innerHTML = `
     <div class="task--1">
-        <h3>${task.title}</h3>
-        <h3>${task.dueDate}</h3>
+        <input type="checkbox" name="doneTask" id="doneTask">
+        <h3 class="task-title">${task.title}</h3>
+        <input type="date" name="date" id="date" value="${task.dueDate}">
+        <h3 class="due-date"></h3>
 
         <select name="priority" id="priority">
         <option ${(priority == "Unset") ? "selected" : ""} value="none" disabled>Priority</option>

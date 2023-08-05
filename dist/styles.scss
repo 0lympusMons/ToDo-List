@@ -90,14 +90,25 @@ header {
     display: flex;
     flex-direction: column;
     background-color: var(--light);
-    
+
     .descriptionIndicator {
         margin-top: -4px;
     }
 
     &--1 {
         display: flex;
-        justify-content: space-between;
+
+        .due-date {
+            margin: auto;
+        }
+
+        .task-title {
+            margin-left: 10px;
+        }
+    }
+
+    .deleteIcon {
+        width: 10px;
     }
 }
 

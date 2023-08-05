@@ -89,7 +89,15 @@ header .text {
 }
 .task--1 {
   display: flex;
-  justify-content: space-between;
+}
+.task--1 .due-date {
+  margin: auto;
+}
+.task--1 .task-title {
+  margin-left: 10px;
+}
+.task .deleteIcon {
+  width: 10px;
 }
 
 /*# sourceMappingURL=styles.css.map */
