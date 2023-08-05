@@ -1,12 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <script defer src="./main.js"></script>
     <title>Document</title>
 </head>
+
 <body>
-    
+    <header>
+        <h1 class="text">Todo</h1>
+    </header>
+
+    <div class="global_wrapper">
+        <div class="menu">
+            <ul>
+                <li><button id="inbox" class="menu__button">Inbox</button></li>
+                <li><button id="today" class="menu__button">Today</button></li>
+                <li><button id="thisWeek" class="menu__button">This Week</button></li>
+            </ul>
+
+            <div class="projects">
+                <h2>Projects</h2>
+                <ul>
+                    <li><button class="project__button">Project 1</button></li>
+                </ul>
+
+                <button id="addProjectButton">Add Project</button>
+            </div>
+        </div>
+
+        <div class="temporary__content">
+            <div class="temporary__content--content">
+                <h1 id="content__title">Title</h1>
+                <div id="tasks-wrapper">
+                    <div class="task">
+                        <div class="task--1">
+                            <h3>Task Title</h3>
+                            <h3>Due Date</h3>
+                            <h3>Priority</h3>
+                        </div>
+
+                        <h3>...</h3>
+
+                    </div>
+                </div>
+
+
+                <form id="form" action="">
+                    <input required type="text" name="task-title" id="task-title">
+                    <input type="date" name="date" id="date">
+                    <select name="priority" id="priority">
+                        <option value="none" disabled selected>Priority</option>
+                        <option value="Important">Important</option>
+                        <option value="Not Important">Not Important</option>
+                    </select>
+
+                    <button type="submit" id="addTask">Add a task</button>
+
+                </form>
+
+                <!-- make a modal/form -->
+
+            </div>
+        </div>
+    </div>
+
+
+
 </body>
+
 </html>
