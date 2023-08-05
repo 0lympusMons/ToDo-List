@@ -21,16 +21,18 @@ function newTask(title, description, dueDate, priority) {
 
 function createChildNode(task) {
     let taskNode = document.createElement("div");
+
     let priority = task.priority;
+
     taskNode.innerHTML = `
     <div class="task--1">
         <h3>${task.title}</h3>
         <h3>${task.dueDate}</h3>
 
         <select name="priority" id="priority">
-        <option ${(priority=="Unset")? selected : ""} value="none" disabled>Priority</option>
-        <option ${(priority=="Important")? selected : ""} value="Important">Important</option>
-        <option ${(priority=="Not Important")? selected : ""} value="Not Important">Not Important</option>
+        <option ${(priority == "Unset") ? "selected" : ""} value="none" disabled>Priority</option>
+        <option ${(priority == "Important") ? "selected" : ""} value="Important">Important</option>
+        <option ${(priority == "Not Important") ? "selected" : ""} value="Not Important">Not Important</option>
         </select>
 
     </div>
