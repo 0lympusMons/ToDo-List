@@ -26,6 +26,7 @@ function createChildNode(task) {
     let priority = task.priority;
 
     taskNode.innerHTML = `
+    <div class="task">
     <div class="task--1">
         <input type="checkbox" name="doneTask" id="doneTask">
         <h3 class="task-title">${task.title}</h3>
@@ -40,15 +41,18 @@ function createChildNode(task) {
 
     </div>
 
+
     <h3>${task.description}</h3>
-    `;
+    </div>
+    `
+    ;
 
     return taskNode;
 };
 
 function addNode(target, node) {
     target = "#tasks-wrapper"; //temporary
-    let addTaskButton = document.querySelector("#addTask");
+    let addTaskButton = document.querySelector("#addTask"); //decouple
 
     (document.querySelector(target)).appendChild(node);
 
@@ -96,11 +100,11 @@ function fetchFormData() {
 };
 
 
-function displayTodayTasks(inbox) {
-
+function displayTodayTasks(inbox)  {
+    
     let todayTasks = [];
 
-    let tasks = inbox.task
+    let tasks = inbox.task;
     tasks.forEach((task, index) => {
 
         let dateArr = task.dueDate.split('-');
@@ -121,6 +125,6 @@ function displayTodayTasks(inbox) {
 
 
 
-export { inbox, createChildNode, addNode };
+export { inbox, createChildNode, addNode, displayTodayTasks };
 
 //emit signal when new task created

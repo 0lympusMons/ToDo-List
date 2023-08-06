@@ -1,3 +1,6 @@
+import { inbox as tasksArr, displayTodayTasks, createChildNode } from "./TodoList";
+
+
 
 let content = document.querySelector(".temporary__content--content");
 
@@ -17,26 +20,43 @@ function createMenu() {
 
         }
     });
-    
 
+    // inboxButton.onclick = createInbox;
+    todayButton.onclick = createToday;
+    thisWeekButton.onclick = createThisWeek;
 
-
-    todayButton.onclick = ()=>{
-        createToday();
-    };
 
 
 };
 
-function createToday(){
+function createToday() {
     content.innerHTML = `
             <h1 id="content__title">Today</h1>
+            <div id="tasks-wrapper">
+            </div>
             `;
-    content.innerHTML += "yawa"
+    let todayTasks = displayTodayTasks(tasksArr);
+    console.log(todayTasks);
+
+    todayTasks.forEach(task => {
+        let node = createChildNode(task)
+
+        addNode("", node);
+    });
 };
 
+//duplicate function!!! please decouple TodoList.addNode
+function addNode(target, node) {
+    target = "#tasks-wrapper"; //temporary
 
-function createThisWeek(){
+    (document.querySelector(target)).appendChild(node);
+
+}
+
+
+
+
+function createThisWeek() {
     content.innerHTML = `
             <h1 id="content__title">Today</h1>
             `;
