@@ -6,15 +6,6 @@ let inbox = {
     task: [],
 };
 
-//add form ay basta
-
-let form = document.querySelector("#form");
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    addTask();
-});
-
 //event listener for new tasks
 events.on("newTask", (task) => {
 
