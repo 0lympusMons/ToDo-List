@@ -1,3 +1,5 @@
-function defaultTab(){
+let inbox;
 
-};
+let today;
+
+let thisWeek;

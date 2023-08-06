@@ -1,4 +1,4 @@
-
+import { isToday } from 'date-fns'
 
 const EventEmitter = require('events');
 
@@ -6,7 +6,6 @@ const events = new EventEmitter();
 
 let inbox = {
     task: [],
-
 };
 
 function newTask(title, description, dueDate, priority) {
@@ -76,7 +75,10 @@ function addTask() {
 
 //event listener for new tasks
 events.on("newTask", (task) => {
+
     inbox.task.push(task);
+    console.log(displayTodayTasks(inbox));
+
 });
 
 function fetchFormData() {
@@ -92,6 +94,30 @@ function fetchFormData() {
     return { title, date, priority };
 
 };
+
+
+function displayTodayTasks(inbox) {
+
+    let todayTasks = [];
+
+    let tasks = inbox.task
+    tasks.forEach((task, index) => {
+
+        let dateArr = task.dueDate.split('-');
+        let year = parseInt(dateArr[0]);
+        let month = dateArr[1] - 1;
+        let day = parseInt(dateArr[2]);
+        if (isToday(new Date(year, month, day))) {
+            console.log(year + " " + month + " " + day);
+            todayTasks.push(inbox.task[index]);
+
+        }
+
+
+    });
+
+    return todayTasks;
+}
 
 
 
