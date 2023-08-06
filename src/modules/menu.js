@@ -1,4 +1,4 @@
-import { createInbox, createToday } from "./content";
+import { createInbox, createToday, createThisWeek } from "./content";
 
 let content = document.querySelector(".temporary__content--content");
 
@@ -24,10 +24,4 @@ thisWeekButton.onclick = createThisWeek;
 
 
 
-//remove this from menu.js file
-function createThisWeek() {
-    content.innerHTML = `
-            <h1 id="content__title">Today</h1>
-            `;
-    content.innerHTML += "yawa"
-};
+

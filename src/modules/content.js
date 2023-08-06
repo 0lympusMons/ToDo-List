@@ -1,4 +1,4 @@
-import { isToday } from 'date-fns'
+import { isThisWeek, isToday } from 'date-fns'
 import { inbox as tasksArr, createChildNode, addNode, addTask } from "./TodoList";
 
 let content = document.querySelector(".temporary__content--content");
@@ -32,9 +32,9 @@ function createInbox() {
 
 
 //returns array of tasks that are within this day
-function displayTodayTasks(inbox) {
+function tasksTodayOrWeek(todayOrWeek, inbox) {
 
-    let todayTasks = [];
+    let tasksArr = [];
 
     let tasks = inbox.task;
     tasks.forEach((task, index) => {
@@ -43,16 +43,27 @@ function displayTodayTasks(inbox) {
         let year = parseInt(dateArr[0]);
         let month = dateArr[1] - 1;
         let day = parseInt(dateArr[2]);
-        if (isToday(new Date(year, month, day))) {
-            console.log(year + " " + month + " " + day);
-            todayTasks.push(inbox.task[index]);
 
-        }
+        if(todayOrWeek == "today"){
+            if (isToday(new Date(year, month, day))) {
+                console.log(year + " " + month + " " + day);
+                tasksArr.push(inbox.task[index]);
+    
+            }
+    
+        }else if(todayOrWeek == "week"){
+
+            if (isThisWeek(new Date(year, month, day))) {
+                console.log(year + " " + month + " " + day);
+                tasksArr.push(inbox.task[index]);
+    
+            }
+        };
 
 
     });
 
-    return todayTasks;
+    return tasksArr;
 };
 
 function createToday() {
@@ -61,7 +72,7 @@ function createToday() {
             <div id="tasks-wrapper">
             </div>
             `;
-    let todayTasks = displayTodayTasks(tasksArr);
+    let todayTasks = tasksTodayOrWeek("today", tasksArr);
     console.log(todayTasks);
 
     todayTasks.forEach(task => {
@@ -70,6 +81,30 @@ function createToday() {
         addNode("#tasks-wrapper", node);
     });
 };
+
+// ********************************************************************//
+//this week
+// ********************************************************************//
+
+function createThisWeek() {
+    content.innerHTML = `
+            <h1 id="content__title">This Week</h1>
+            <div id="tasks-wrapper">
+            </div>
+            `;
+    let thisWeekTasks = tasksTodayOrWeek("week", tasksArr);
+    console.log(thisWeekTasks);
+
+    thisWeekTasks.forEach(task => {
+        let node = createChildNode(task)
+
+        addNode("#tasks-wrapper", node);
+    });
+};
+
+// ********************************************************************//
+//Form
+// ********************************************************************//
 
 function createFormNode(){
 
@@ -97,4 +132,4 @@ function createFormNode(){
 
     return form;
 };
-export {createInbox, createToday};
+export {createInbox, createToday, createThisWeek};
