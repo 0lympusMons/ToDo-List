@@ -1,5 +1,3 @@
-import { isToday } from 'date-fns'
-
 const EventEmitter = require('events');
 
 const events = new EventEmitter();
@@ -7,6 +5,22 @@ const events = new EventEmitter();
 let inbox = {
     task: [],
 };
+
+//add form ay basta
+
+let form = document.querySelector("#form");
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    addTask();
+});
+
+//event listener for new tasks
+events.on("newTask", (task) => {
+
+    inbox.task.push(task);
+
+});
 
 function newTask(title, description, dueDate, priority) {
     let task = {
@@ -45,47 +59,35 @@ function createChildNode(task) {
     <h3>${task.description}</h3>
     </div>
     `
-    ;
+        ;
 
     return taskNode;
 };
 
 function addNode(target, node) {
-    target = "#tasks-wrapper"; //temporary
-    let addTaskButton = document.querySelector("#addTask"); //decouple
+    // target = "#tasks-wrapper"; //temporary
 
     (document.querySelector(target)).appendChild(node);
 
 }
 
-let addTaskButton = document.querySelector("#addTask");
-let form = document.querySelector("#form");
 
-form.addEventListener("submit", (e) => {
-    addTask();
-    e.preventDefault();
-})
 
 function addTask() {
+
     let formData = fetchFormData();
     let bar = newTask(formData.title, "a", formData.date, formData.priority);
     let foo = createChildNode(bar);
 
-    // let foo = createChildNode({ title: formData.title, description: "aa", dueDate: formData.date, priority: formData.priority });
-    addNode('useless argument', foo);
+    addNode('#tasks-wrapper', foo);
 
     events.emit("newTask", bar);
 };
 
-//event listener for new tasks
-events.on("newTask", (task) => {
 
-    inbox.task.push(task);
-    console.log(displayTodayTasks(inbox));
-
-});
-
+//fetches data from form
 function fetchFormData() {
+
     let form = document.querySelector("form");
     let formData = new FormData(form);
 
@@ -100,31 +102,6 @@ function fetchFormData() {
 };
 
 
-function displayTodayTasks(inbox)  {
-    
-    let todayTasks = [];
-
-    let tasks = inbox.task;
-    tasks.forEach((task, index) => {
-
-        let dateArr = task.dueDate.split('-');
-        let year = parseInt(dateArr[0]);
-        let month = dateArr[1] - 1;
-        let day = parseInt(dateArr[2]);
-        if (isToday(new Date(year, month, day))) {
-            console.log(year + " " + month + " " + day);
-            todayTasks.push(inbox.task[index]);
-
-        }
-
-
-    });
-
-    return todayTasks;
-}
-
-
-
-export { inbox, createChildNode, addNode, displayTodayTasks };
+export { inbox, createChildNode, addNode, addTask };
 
 //emit signal when new task created

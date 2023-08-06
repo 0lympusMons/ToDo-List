@@ -1,16 +1,6 @@
-import {inbox, createChildNode, addNode} from "./modules/TodoList.js";
+const ToDo = require("./modules/TodoList.js");
+const menu = require("./modules/menu.js")
 
-import createMenu from "./modules/menu.js";
+console.log(ToDo.inbox);
 
-const defaultTab = "inbox";
-function render(){
 
-};
-
-console.log(inbox);
-
-createMenu();
-
-// let foo = createChildNode({title:"Tit", description:"aa", dueDate:"Due D", priority:"Impo"});
-
-// addNode('lol', foo);
