@@ -132,4 +132,11 @@ function createFormNode(){
 
     return form;
 };
-export {createInbox, createToday, createThisWeek};
+
+//!!! NOT ALL HAVE IMPLEMENTED THIS FUNCTION
+function setContentTitle(title){
+    content.innerHTML = `
+    <h1 id="content__title">${title}</h1>
+    `;
+}
+export {createInbox, createToday, createThisWeek, setContentTitle};

@@ -1,4 +1,5 @@
 import { addNode } from './TodoList';
+import { setContentTitle } from './content';
 
 
 const EventEmitter = require('events');
@@ -21,11 +22,28 @@ function createProject(name){
     return newProject;
 }
 
+function displayProject(key){
+
+let currentProject;
+
+projects.forEach(project => {
+    if(project.key == key){
+        currentProject = project;
+        console.log(project);
+    }
+});
+
+setContentTitle(currentProject.name)
+
+}
+
 function createProjectMenuNode(newProject){
 
     let projectListNode = document.createElement("li");
     projectListNode.innerHTML = `<button class="project__button" data-index="${newProject.key}">${newProject.name}</button>`;
-
+    projectListNode.addEventListener("mousedown", ()=>{
+        displayProject(newProject.key);
+    });
     return projectListNode;
 }
 
