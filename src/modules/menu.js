@@ -26,7 +26,7 @@ thisWeekButton.onclick = createThisWeek;
 addProjectField.addEventListener("keyup", (event)=>{
     if(event.key == "Enter" && addProjectField.value != ""){
         
-        createProject(addProjectField.value)
+        createProject(addProjectField.value);
         addProjectField.value = "";
 
     }
