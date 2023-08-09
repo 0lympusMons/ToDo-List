@@ -14,7 +14,7 @@ function createInbox() {
             </div>
             `;
 
-        
+
     (tasksArr.task).forEach(task => {
         let node = createChildNode(task)
 
@@ -44,19 +44,19 @@ function tasksTodayOrWeek(todayOrWeek, inbox) {
         let month = dateArr[1] - 1;
         let day = parseInt(dateArr[2]);
 
-        if(todayOrWeek == "today"){
+        if (todayOrWeek == "today") {
             if (isToday(new Date(year, month, day))) {
                 console.log(year + " " + month + " " + day);
                 tasksArr.push(inbox.task[index]);
-    
+
             }
-    
-        }else if(todayOrWeek == "week"){
+
+        } else if (todayOrWeek == "week") {
 
             if (isThisWeek(new Date(year, month, day))) {
                 console.log(year + " " + month + " " + day);
                 tasksArr.push(inbox.task[index]);
-    
+
             }
         };
 
@@ -106,7 +106,7 @@ function createThisWeek() {
 //Form
 // ********************************************************************//
 
-function createFormNode(){
+function createFormNode() {
 
     let form = document.createElement("form");
     form.setAttribute("id", "form");
@@ -134,9 +134,29 @@ function createFormNode(){
 };
 
 //!!! NOT ALL HAVE IMPLEMENTED THIS FUNCTION
-function setContentTitle(title){
+function setContentTitle(title) {
     content.innerHTML = `
     <h1 id="content__title">${title}</h1>
     `;
 }
-export {createInbox, createToday, createThisWeek, setContentTitle};
+
+//!!! NOT ALL HAVE IMPLEMENTED THIS FUNCTION
+function createPageTemplate() {
+    let template = document.createElement("div");
+    template.innerHTML = `
+        <h1 id="content__title"></h1>
+
+
+        <!-- make a modal/form -->
+
+    `
+    template.classList.add(".temporary__content--content");
+
+    return template;
+};
+
+function deletePage(){
+    document.querySelector(".temporary__content").innerHTML = "";
+};
+
+export { createInbox, createToday, createThisWeek, setContentTitle, createFormNode, createPageTemplate, deletePage };
