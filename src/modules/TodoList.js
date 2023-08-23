@@ -2,15 +2,19 @@ const EventEmitter = require('events');
 
 const events = new EventEmitter();
 
+//!!! PROBLEM
+//this array is has not been utilized
 let inbox = {
     task: [],
 };
 
+//!!! PROBLEM
 //event listener for new tasks
 events.on("newTask", (task) => {
 
     inbox.task.push(task);
 
+    console.log("added new task");
 });
 
 function newTask(title, description, dueDate, priority) {
@@ -64,10 +68,10 @@ function addNode(target, node) {
 
 }
 
-
-
-function addTask() {
-
+//!!! PROBLEM
+//add tasks to array
+function addTask(toArray) {
+    
     let formData = fetchFormData();
     let bar = newTask(formData.title, "a", formData.date, formData.priority);
     let foo = createChildNode(bar);
@@ -96,5 +100,3 @@ function fetchFormData() {
 
 
 export { inbox, createChildNode, addNode, addTask };
-
-//emit signal when new task created
