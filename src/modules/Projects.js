@@ -42,9 +42,8 @@ function displayProject(key) {
     deletePage();
 
     // addNode(".temporary__content", createPageTemplate());
-    createPageTemplate();
+    createPageTemplate(currentProject.name);
 
-    setContentTitle(currentProject.name);
     addNode(".temporary__content--content", createFormNode());
 
 
