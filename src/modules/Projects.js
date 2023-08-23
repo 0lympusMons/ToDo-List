@@ -1,5 +1,5 @@
 import { addNode } from './TodoList';
-import { createFormNode, setContentTitle, createPageTemplate, deletePage } from './content';
+import { createFormNode, createPageTemplate, deletePage } from './content';
 
 
 const EventEmitter = require('events');

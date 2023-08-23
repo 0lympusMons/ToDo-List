@@ -152,4 +152,4 @@ function deletePage(){
     document.querySelector(".temporary__content").innerHTML = "";
 };
 
-export { createInbox, createToday, createThisWeek, setContentTitle, createFormNode, createPageTemplate, deletePage };
+export { createInbox, createToday, createThisWeek, createFormNode, createPageTemplate, deletePage };
