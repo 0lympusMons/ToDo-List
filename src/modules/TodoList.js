@@ -55,6 +55,8 @@ function createChildNode(task) {
     return taskNode;
 };
 
+
+//THIS FUNCTION BELONGS TO CONTENT.JS
 function addNode(target, node) {
     // target = "#tasks-wrapper"; //temporary
 
