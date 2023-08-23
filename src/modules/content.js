@@ -150,7 +150,7 @@ function createPageTemplate() {
         <!-- make a modal/form -->
 
     `
-    template.classList.add(".temporary__content--content");
+    template.classList.add("temporary__content--content");
 
     document.querySelector(".temporary__content").appendChild(template);
 };
