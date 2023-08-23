@@ -22,8 +22,9 @@ function createProject(name) {
     return newProject;
 }
 
-//DISPLAYS PROJECT IN TEMPORARY CONTENT
 function displayProject(key) {
+
+    // createPageTemplate();
 
     let currentProject;
 
@@ -45,6 +46,7 @@ function displayProject(key) {
 
     addNode(".temporary__content--content", createFormNode());
 
+
 }
 
 
@@ -54,15 +56,13 @@ function displayTasks() {
 function createProjectMenuNode(newProject) {
 
     let projectMenuNode = document.createElement("li");
-    projectMenuNode.innerHTML = `<button class="project__button" data-key="${newProject.key}">${newProject.name}</button>`;
+    projectMenuNode.innerHTML = `<button class="project__button" data-index="${newProject.key}">${newProject.name}</button>`;
     projectMenuNode.addEventListener("mousedown", () => {
         displayProject(newProject.key);
     });
     return projectMenuNode;
 }
 
-
-//ADDS UNIQUE KEY FOR EVERY PROJECT FOR IDENTIFICATION
 let key = (function () {
     let number = 0;
     function newKey() {
