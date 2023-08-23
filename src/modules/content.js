@@ -133,18 +133,11 @@ function createFormNode() {
     return form;
 };
 
-//!!! NOT ALL HAVE IMPLEMENTD THIS FUNCTION
-function setContentTitle(title) {
-    content.innerHTML = `
-    <h1 id="content__title">${title}</h1>
-    `;
-}
-
 //!!! NOT ALL HAVE IMPLEMENTED THIS FUNCTION
-function createPageTemplate() {
+function createPageTemplate(contentTitle) {
     let template = document.createElement("div");
     template.innerHTML = `
-        <h1 id="content__title"></h1>
+        <h1 id="content__title">${contentTitle}</h1>
 
 
         <!-- make a modal/form -->
