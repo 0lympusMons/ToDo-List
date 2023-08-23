@@ -137,10 +137,13 @@ function createFormNode() {
 function createPageTemplate(contentTitle) {
     let template = document.createElement("div");
     template.innerHTML = `
+
         <h1 id="content__title">${contentTitle}</h1>
-
-
-        <!-- make a modal/form -->
+        
+        <div id="tasks-wrapper">
+        </div>
+        
+    </div>
 
     `
     template.classList.add("temporary__content--content");
@@ -148,7 +151,7 @@ function createPageTemplate(contentTitle) {
     document.querySelector(".temporary__content").appendChild(template);
 };
 
-function deletePage(){
+function deletePage() {
     document.querySelector(".temporary__content").innerHTML = "";
 };
 
