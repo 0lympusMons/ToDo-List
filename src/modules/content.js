@@ -133,7 +133,7 @@ function createFormNode() {
     return form;
 };
 
-//!!! NOT ALL HAVE IMPLEMENTED THIS FUNCTION
+//!!! NOT ALL HAVE IMPLEMENTD THIS FUNCTION
 function setContentTitle(title) {
     content.innerHTML = `
     <h1 id="content__title">${title}</h1>
@@ -152,7 +152,7 @@ function createPageTemplate() {
     `
     template.classList.add(".temporary__content--content");
 
-    return template;
+    document.querySelector(".temporary__content").innerHTML = template;
 };
 
 function deletePage(){
