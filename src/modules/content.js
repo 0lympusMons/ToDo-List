@@ -152,7 +152,7 @@ function createPageTemplate() {
     `
     template.classList.add(".temporary__content--content");
 
-    document.querySelector(".temporary__content").innerHTML = template;
+    document.querySelector(".temporary__content").appendChild(template);
 };
 
 function deletePage(){
