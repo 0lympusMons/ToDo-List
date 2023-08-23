@@ -24,6 +24,8 @@ function createProject(name) {
 
 function displayProject(key) {
 
+    // createPageTemplate();
+
     let currentProject;
 
     //finds the project inside projects[]
@@ -36,14 +38,15 @@ function displayProject(key) {
 
     // display these tasks 
     let currentProjectTasks = currentProject.tasks;
-    
+
     deletePage();
 
-    addNode(".temporary__content", createPageTemplate());
+    // addNode(".temporary__content", createPageTemplate());
+    createPageTemplate();
 
     setContentTitle(currentProject.name);
     addNode(".temporary__content--content", createFormNode());
-    
+
 
 }
 
